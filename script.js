@@ -3,8 +3,8 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-let humanScore = 0;
-let computerScore = 0;
+let humanscore = 0;
+let computerscore = 0;
 
 function getComputerChoice() {
     const randomNumber = Math.random();
@@ -38,17 +38,17 @@ async function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        humanScore++;
+        humanscore++;
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
     } else {
-        computerScore++;
+        computerscore++;
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
     }
 }
 
-async function playGame() {
-    humanScore = 0;
-    computerScore = 0;
+async function playgame() {
+    humanscore = 0;
+    computerscore = 0;
 
     for (let i = 0; i < 5; i++) {
         const humanSelection = await getHumanChoice();
@@ -56,12 +56,12 @@ async function playGame() {
         await playRound(humanSelection, computerSelection);
     }
 
-    if (humanScore > computerScore) {
-        console.log(`You won the game! Final score: You ${humanScore} - Computer ${computerScore}`);
-    } else if (computerScore > humanScore) {
-        console.log(`You lost the game! Final score: You ${humanScore} - Computer ${computerScore}`);
+    if (humanscore > computerscore) {
+        console.log(`you won the game! final score: You ${humanscore} - Computer ${computerscore}`);
+    } else if (computerscore > humanscore) {
+        console.log(`you lost the game! final score: You ${humanscore} - Computer ${computerscore}`);
     } else {
-        console.log(`The game was a tie! Final score: You ${humanScore} - Computer ${computerScore}`);
+        console.log(`the game was a tie! final score: You ${humanscore} - Computer ${computerscore}`);
     }
 
     readline.close();
